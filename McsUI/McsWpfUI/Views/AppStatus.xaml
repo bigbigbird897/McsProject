@@ -1,0 +1,17 @@
+﻿<UserControl
+    x:Class="McsWpfUI.Views.AppStatus"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:prism="http://prismlibrary.com/"
+    
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <StatusBar HorizontalAlignment="Left">
+            <TextBlock
+                Margin="2"
+                Style="{x:Null}"
+                Text="慧灵科技(昆山)有限公司" />
+        </StatusBar>
+    </Grid>
+</UserControl>

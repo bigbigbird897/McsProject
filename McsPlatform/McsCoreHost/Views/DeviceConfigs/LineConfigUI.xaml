@@ -1,0 +1,97 @@
+﻿<Window
+    x:Class="McsCoreLib.Views.DeviceConfigs.LineConfigUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    x:Name="window"
+    Width="650"
+    Height="700"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="av">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Background="AliceBlue"
+            Content="操作位配置"
+            FontSize="14"
+            FontWeight="Bold"
+            Style="{x:Null}" />
+        <DataGrid
+            Grid.Row="1"
+            Margin="2"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            CanUserReorderColumns="False"
+            ItemsSource="{Binding Stations, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectSt, UpdateSourceTrigger=PropertyChanged}"
+            Style="{x:Null}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="{Binding AddItem}" Header="添加" />
+                    <Separator />
+                    <MenuItem Command="{Binding RemoveItem}" Header="删除" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding StationID, UpdateSourceTrigger=PropertyChanged}"
+                    Header="操作位编号" />
+                <DataGridTextColumn
+                    Width="2*"
+                    Binding="{Binding StationName, UpdateSourceTrigger=PropertyChanged}"
+                    Header="操作位名称" />
+                <DataGridTemplateColumn Width="0.8*" Header="功能">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox
+                                DisplayMemberPath="FuncTypeName"
+                                ItemsSource="{Binding DataContext.FunTypes, ElementName=window}"
+                                SelectedValue="{Binding StationFunction, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedValuePath="FuncTypeID"
+                                Style="{x:Null}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridCheckBoxColumn Binding="{Binding IsDisable, UpdateSourceTrigger=PropertyChanged}" Header="禁用" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border
+            Grid.Row="2"
+            Margin="2,0,2,0"
+            BorderBrush="Gray"
+            BorderThickness="1" />
+        <StackPanel
+            Grid.Row="3"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Width="100"
+                Margin="5"
+                Command="{Binding DataSave}"
+                CommandParameter="{Binding ElementName=window}"
+                Content="保  存"
+                FontWeight="Bold" />
+            <Button
+                Width="100"
+                Margin="5"
+                Command="{Binding Quit}"
+                CommandParameter="{Binding ElementName=window}"
+                Content="退  出"
+                FontWeight="Bold" />
+        </StackPanel>
+    </Grid>
+</Window>

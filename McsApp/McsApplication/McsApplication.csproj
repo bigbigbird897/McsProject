@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppDtoLib\AppDtoLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AppMessages\" />
+    <Folder Include="AppParas\" />
+    <Folder Include="Models\" />
+    <Folder Include="MqttPara\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>

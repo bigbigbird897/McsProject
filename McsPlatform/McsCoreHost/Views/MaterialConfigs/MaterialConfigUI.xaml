@@ -1,0 +1,111 @@
+﻿<Window
+    x:Class="McsCoreLib.Views.MaterialConfigUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    x:Name="window"
+    Width="800"
+    Height="600"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="av">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Background="AliceBlue"
+            Content="实验器材配置"
+            FontSize="14"
+            FontWeight="Bold"
+            Style="{x:Null}" />
+        <DataGrid
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="2"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            CanUserReorderColumns="False"
+            ItemsSource="{Binding Materials, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectConfig, UpdateSourceTrigger=PropertyChanged}"
+            Style="{x:Null}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="{Binding AddItem}" Header="添加" />
+                    <Separator />
+                    <MenuItem Command="{Binding RemoveItem}" Header="删除" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Header="器材/试剂编号" IsReadOnly="True"  Binding="{Binding MaterialID,UpdateSourceTrigger=PropertyChanged}" Width="*" />-->
+                <DataGridTemplateColumn Width="0.5*" Header="器材/试剂类型">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox
+                                DisplayMemberPath="MaterialTypeName"
+                                ItemsSource="{Binding DataContext.MaterialConfigs, ElementName=window}"
+                                SelectedValue="{Binding MaterialTypeID, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedValuePath="MaterialTypeID"
+                                Style="{x:Null}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn
+                    Width="2*"
+                    Binding="{Binding MaterialName, UpdateSourceTrigger=PropertyChanged}"
+                    Header="器材/试剂名称(规格描述)" />
+                <DataGridTemplateColumn Header="器材/试剂参数">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Command="{Binding DataContext.OpenParaUI, ElementName=window}"
+                                Content="参数明细..."
+                                Style="{x:Null}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridCheckBoxColumn Binding="{Binding IsDisable, UpdateSourceTrigger=PropertyChanged}" Header="禁用" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Margin="2,0,2,0"
+            BorderBrush="Blue"
+            BorderThickness="1" />
+        <StackPanel
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Width="100"
+                Margin="5"
+                Command="{Binding DataSave}"
+                CommandParameter="{Binding ElementName=window}"
+                Content="保  存"
+                FontWeight="Bold" />
+            <Button
+                Width="100"
+                Margin="5"
+                Command="{Binding SaveCancel}"
+                CommandParameter="{Binding ElementName=window}"
+                Content="退  出"
+                FontWeight="Bold" />
+        </StackPanel>
+    </Grid>
+</Window>
