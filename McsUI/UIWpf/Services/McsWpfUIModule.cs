@@ -7,7 +7,7 @@ using Volo.Abp.Modularity;
 namespace UIWpf.Services
 {
     [DependsOn(typeof(McsAppModule))]
-    public class McsWpfUIModle : AbpModule
+    public class McsWpfUIModule : AbpModule
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 

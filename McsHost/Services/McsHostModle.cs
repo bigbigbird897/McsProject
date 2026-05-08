@@ -21,7 +21,7 @@ using ServiceWebAPI.Services;
 
 namespace Host.Services
 {
-    [DependsOn(typeof(McsWebApiModle), typeof(McsWpfUIModle))]
+    [DependsOn(typeof(McsWebApiModle), typeof(McsWpfUIModule))]
     public class HostModle : AbpModule
     {
         private readonly Logger mLogger = LogManager.GetCurrentClassLogger();
