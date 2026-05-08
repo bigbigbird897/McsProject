@@ -1,0 +1,42 @@
+﻿<Window
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             x:Name="window"
+             xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            
+              mc:Ignorable="av" x:Class="UIWpf.Views.MqttConfig"
+             prism:ViewModelLocator.AutoWireViewModel="True"  Width="300" Height="285" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <Label Style="{x:Null}" Grid.Row="0" Background="AliceBlue" Content="MQTT 参数配置" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2" />
+        <Label Style="{x:Null}" Grid.Row="1" Content="客户端编号:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+        <TextBox Style="{x:Null}" Grid.Row="1" Grid.Column="1"  Margin="2"  Text="{Binding Para.ClientID, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Style="{x:Null}" Grid.Row="2" Content="服务器IP:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+        <TextBox Style="{x:Null}" Grid.Row="2" Grid.Column="1"  Margin="2"  Text="{Binding Para.ServerIP, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Style="{x:Null}" Grid.Row="3" Content="服务器端口:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+        <TextBox Style="{x:Null}" Grid.Row="3" Grid.Column="1"  Margin="2" Text="{Binding Para.ServerPort, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Style="{x:Null}" Grid.Row="4" Content="通信超时:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+        <TextBox Style="{x:Null}" Grid.Row="4" Grid.Column="1"  Margin="2" Text="{Binding Para.TimeOut, UpdateSourceTrigger=PropertyChanged}" />
+        <Border Style="{x:Null}" Grid.Row="6" Grid.ColumnSpan="2" BorderBrush="Gray" BorderThickness="1" Margin="1,0,1,0" />
+        <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Content="取  消" Width="90" Margin="2" FontWeight="Bold" Command="{Binding DataCancel}" CommandParameter="{Binding ElementName=window}" />
+            <Button Content="保  存" Width="90" Margin="2" FontWeight="Bold" Command="{Binding DataSave}" CommandParameter="{Binding ElementName=window}" />
+        </StackPanel>
+    </Grid>
+</Window>

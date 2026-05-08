@@ -1,27 +1,25 @@
 <Solution>
-  <Folder Name="/0-McsPlatform/" />
-  <Folder Name="/0-McsPlatform/01-Core/">
-    <Project Path="McsPlatform/McsCoreDtoLib/McsCoreDtoLib.csproj" />
-    <Project Path="McsPlatform/McsCorelib/McsCoreLib.csproj" />
-    <Project Path="McsPlatform/McsWpfCore/McsWpfCore.csproj" />
+  <Folder Name="/McsCommon/" />
+  <Folder Name="/McsCommon/CommonCore/">
+    <Project Path="McsCommon/CommonCore/CoreDtoLib/CoreDtoLib.csproj" />
+    <Project Path="McsCommon/CommonCore/CoreServiceLib/CoreServiceLib.csproj" />
+    <Project Path="McsCommon/CommonCore/CoreWebAPI/CoreWebAPI.csproj" />
+    <Project Path="McsCommon/CommonCore/CoreWpfLib/CoreWpfLib.csproj" />
   </Folder>
-  <Folder Name="/0-McsPlatform/02-Hardwares/">
-    <Project Path="McsPlatform/McsHardware/HitbotMqtt/HitbotMqtt.csproj" />
-    <Project Path="McsPlatform/McsHardware/McsOpcUA/McsOpcUA.csproj" Id="9688cc5e-4098-40ba-a30d-5d43045098fd" />
-    <Project Path="McsPlatform/McsHardware/McsTcpLib/McsTcpLib.csproj" />
+  <Folder Name="/McsCommon/CommonHardwareInteraction/">
+    <Project Path="McsCommon/CommonHardwareInteraction/HitbotMqtt/HitbotMqtt.csproj" />
+    <Project Path="McsCommon/CommonHardwareInteraction/OPCUA/OpcUA.csproj" />
+    <Project Path="McsCommon/CommonHardwareInteraction/Tcp/Tcp.csproj" />
   </Folder>
-  <Folder Name="/0-McsPlatform/03-CoreInterface/">
-    <Project Path="McsPlatform/McsCoreWebAPI/McsCoreInterface.csproj" />
+  <Folder Name="/McsHost/">
+    <Project Path="McsHost/Host.csproj" />
   </Folder>
-  <Folder Name="/0-McsPlatform/04-Host/">
-    <Project Path="McsPlatform/McsCoreHost/McsHost.csproj" />
-  </Folder>
-  <Folder Name="/1-McsApp/">
-    <Project Path="McsApp/AppDtoLib/AppDtoLib.csproj" />
-    <Project Path="McsApp/McsApplication/McsApplication.csproj" />
-    <Project Path="McsApp/WebAPI/WebAPI.csproj" />
+  <Folder Name="/McsService/">
+    <Project Path="McsService/ServiceDtoLib/ServiceDtoLib.csproj" />
+    <Project Path="McsService/ServiceImplement/ServiceImplement.csproj" />
+    <Project Path="McsService/ServiceWebAPI/ServiceWebAPI.csproj" />
   </Folder>
   <Folder Name="/McsUI/">
-    <Project Path="McsUI/McsWpfUI/McsWpfUI.csproj" />
+    <Project Path="McsUI/UIWpf/UIWpf.csproj" />
   </Folder>
 </Solution>
