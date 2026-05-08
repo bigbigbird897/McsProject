@@ -5,7 +5,6 @@
     <Project Path="McsCommon/CommonHardwareInteraction/Tcp/Tcp.csproj" />
   </Folder>
   <Folder Name="/McsCommon/Core/">
-    <Project Path="McsCommon/CommonCore/CoreDtoLib/CoreDtoLib.csproj" />
     <Project Path="McsCommon/CommonCore/CoreServiceLib/CoreServiceLib.csproj" />
     <Project Path="McsCommon/CommonCore/CoreWebAPI/CoreWebAPI.csproj" />
     <Project Path="McsCommon/CommonCore/CoreWpfLib/CoreWpfLib.csproj" />
